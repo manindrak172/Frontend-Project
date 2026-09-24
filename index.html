@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MovieBook - Movie Ticket Booking</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🎬</span>
+            <span>Movie<span class="logo-highlight">Book</span></span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="movies.html">Movies</a>
+            <a href="theatres.html">Theatres</a>
+            <a href="bookings.html">My Bookings</a>
+        </nav>
+
+        <div class="nav-actions">
+
+            <button class="location-btn" id="locationBtn">
+                📍 <span id="locationText">Delhi</span>
+                <span class="arrow">⌄</span>
+            </button>
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MOBILE MENU ================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <a href="index.html">Home</a>
+    <a href="movies.html">Movies</a>
+    <a href="theatres.html">Theatres</a>
+    <a href="bookings.html">My Bookings</a>
+
+    <a href="login.html" class="mobile-login">
+        Login
+    </a>
+
+</div>
+
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <span class="hero-tag">
+            🎟️ BOOK YOUR EXPERIENCE
+        </span>
+
+        <h1>
+            Your Movie.
+            <br>
+            Your <span>Experience.</span>
+        </h1>
+
+        <p>
+            Book movie tickets easily, choose your favourite seats
+            and enjoy the big screen experience.
+        </p>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <span class="search-icon">🔍</span>
+
+            <input
+                type="text"
+                id="movieSearch"
+                placeholder="Search for movies..."
+                autocomplete="off"
+            >
+
+            <button id="searchBtn">
+                Search
+            </button>
+
+        </div>
+
+
+        <div class="hero-info">
+
+            <div>
+                <strong>500+</strong>
+                <span>Movies</span>
+            </div>
+
+            <div>
+                <strong>100+</strong>
+                <span>Theatres</span>
+            </div>
+
+            <div>
+                <strong>50K+</strong>
+                <span>Happy Users</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main>
+
+
+<!-- ================= NOW SHOWING ================= -->
+
+<section class="section">
+
+    <div class="section-header">
+
+        <div>
+            <span class="section-label">NOW PLAYING</span>
+
+            <h2>
+                Now Showing
+            </h2>
+
+            <p>
+                Catch the latest movies playing near you.
+            </p>
+        </div>
+
+        <a href="movies.html" class="view-all">
+            View All →
+        </a>
+
+    </div>
+
+
+    <div class="movie-grid" id="nowShowingMovies">
+
+        <!-- Movie 1 -->
+
+        <article class="movie-card" data-title="War 2">
+
+            <div class="movie-poster">
+
+                <img
+                    src="https://image.tmdb.org/t/p/w500/6JjfSchsU6daXk2AKX8EEBjO3Fm.jpg"
+                    alt="War 2"
+                >
+
+                <div class="movie-rating">
+                    ⭐ 8.2
+                </div>
+
+                <div class="movie-overlay">
+
+                    <a href="movie-details.html" class="quick-view">
+                        View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="movie-info">
+
+                <h3>War 2</h3>
+
+                <p>
+                    Action • Thriller
+                </p>
+
+                <div class="movie-bottom">
+
+                    <span>🇮🇳 Hindi</span>
+
+                    <a href="movie-details.html" class="book-small">
+                        Book
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Movie 2 -->
+
+        <article class="movie-card" data-title="Coolie">
+
+            <div class="movie-poster">
+
+                <img
+                    src="https://image.tmdb.org/t/p/w500/5G0x4K1L5XJ0Z4Jj7Y7Kq0Jq7Y7.jpg"
+                    alt="Coolie"
+                >
+
+                <div class="movie-rating">
+                    ⭐ 8.5
+                </div>
+
+                <div class="movie-overlay">
+
+                    <a href="movie-details.html" class="quick-view">
+                        View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="movie-info">
+
+                <h3>Coolie</h3>
+
+                <p>
+                    Action • Drama
+                </p>
+
+                <div class="movie-bottom">
+
+                    <span>🇮🇳 Hindi</span>
+
+                    <a href="movie-details.html" class="book-small">
+                        Book
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Movie 3 -->
+
+        <article class="movie-card" data-title="Kantara">
+
+            <div class="movie-poster">
+
+                <img
+                    src="https://image.tmdb.org/t/p/w500/9eB1K6L7G5Q9J4L0K1V4X2R7.jpg"
+                    alt="Kantara"
+                >
+
+                <div class="movie-rating">
+                    ⭐ 8.8
+                </div>
+
+                <div class="movie-overlay">
+
+                    <a href="movie-details.html" class="quick-view">
+                        View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="movie-info">
+
+                <h3>Kantara</h3>
+
+                <p>
+                    Action • Mystery
+                </p>
+
+                <div class="movie-bottom">
+
+                    <span>🇮🇳 Hindi</span>
+
+                    <a href="movie-details.html" class="book-small">
+                        Book
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Movie 4 -->
+
+        <article class="movie-card" data-title="Housefull 5">
+
+            <div class="movie-poster">
+
+                <img
+                    src="https://image.tmdb.org/t/p/w500/6Z7L4Y3R5T8X9K2J1Q4M6N8P.jpg"
+                    alt="Housefull 5"
+                >
+
+                <div class="movie-rating">
+                    ⭐ 7.4
+                </div>
+
+                <div class="movie-overlay">
+
+                    <a href="movie-details.html" class="quick-view">
+                        View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="movie-info">
+
+                <h3>Housefull 5</h3>
+
+                <p>
+                    Comedy • Drama
+                </p>
+
+                <div class="movie-bottom">
+
+                    <span>🇮🇳 Hindi</span>
+
+                    <a href="movie-details.html" class="book-small">
+                        Book
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- No Result -->
+
+    <div class="no-results" id="noResults">
+
+        <div>🎬</div>
+
+        <h3>No movies found</h3>
+
+        <p>
+            Try searching with another movie name.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= UPCOMING MOVIES ================= -->
+
+<section class="section upcoming-section">
+
+    <div class="section-header">
+
+        <div>
+
+            <span class="section-label">
+                COMING SOON
+            </span>
+
+            <h2>
+                Upcoming Movies
+            </h2>
+
+            <p>
+                Get ready for the movies everyone is talking about.
+            </p>
+
+        </div>
+
+        <a href="movies.html" class="view-all">
+            View All →
+        </a>
+
+    </div>
+
+
+    <div class="upcoming-grid">
+
+
+        <article class="upcoming-card">
+
+            <div class="upcoming-poster">
+
+                <img
+                    src="https://image.tmdb.org/t/p/w500/8L0X2Q4P7N9K1M5R3T6V8Y0.jpg"
+                    alt="Upcoming Movie"
+                >
+
+                <span class="coming-badge">
+                    COMING SOON
+                </span>
+
+            </div>
+
+            <div class="upcoming-info">
+
+                <h3>Avengers: Secret Wars</h3>
+
+                <p>
+                    Action • Adventure
+                </p>
+
+                <span class="release-date">
+                    📅 Coming Soon
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <article class="upcoming-card">
+
+            <div class="upcoming-poster">
+
+                <img
+                    src="https://image.tmdb.org/t/p/w500/7N2M4K9P1Q5R8T3X6Y0Z.jpg"
+                    alt="Upcoming Movie"
+                >
+
+                <span class="coming-badge">
+                    COMING SOON
+                </span>
+
+            </div>
+
+            <div class="upcoming-info">
+
+                <h3>Avatar</h3>
+
+                <p>
+                    Sci-Fi • Adventure
+                </p>
+
+                <span class="release-date">
+                    📅 Coming Soon
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <article class="upcoming-card">
+
+            <div class="upcoming-poster">
+
+                <img
+                    src="https://image.tmdb.org/t/p/w500/4Q8M2N6K9P1R5T7X3Y0Z.jpg"
+                    alt="Upcoming Movie"
+                >
+
+                <span class="coming-badge">
+                    COMING SOON
+                </span>
+
+            </div>
+
+            <div class="upcoming-info">
+
+                <h3>Project X</h3>
+
+                <p>
+                    Action • Thriller
+                </p>
+
+                <span class="release-date">
+                    📅 Coming Soon
+                </span>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= OFFER SECTION ================= -->
+
+<section class="offer-section">
+
+    <div class="offer-content">
+
+        <span class="offer-label">
+            🎁 SPECIAL OFFER
+        </span>
+
+        <h2>
+            Movie Night,
+            <span>Made Better.</span>
+        </h2>
+
+        <p>
+            Get exclusive discounts when you book your movie tickets
+            through MovieBook.
+        </p>
+
+        <button class="offer-btn" id="offerBtn">
+            Explore Offers →
+        </button>
+
+    </div>
+
+
+    <div class="offer-card">
+
+        <div class="offer-icon">
+            🎟️
+        </div>
+
+        <div>
+
+            <span>
+                USE CODE
+            </span>
+
+            <h3>
+                MOVIE50
+            </h3>
+
+            <p>
+                Get up to ₹50 OFF
+            </p>
+
+        </div>
+
+        <button
+            class="copy-btn"
+            id="copyCodeBtn"
+            title="Copy coupon"
+        >
+            📋
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="section why-section">
+
+    <div class="section-header center">
+
+        <div>
+
+            <span class="section-label">
+                WHY MOVIEBOOK
+            </span>
+
+            <h2>
+                Everything You Need
+            </h2>
+
+            <p>
+                A simple and convenient way to book your movie experience.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="features-grid">
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🎫
+            </div>
+
+            <h3>
+                Easy Booking
+            </h3>
+
+            <p>
+                Book your favourite movie tickets in just a few clicks.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                💺
+            </div>
+
+            <h3>
+                Choose Your Seat
+            </h3>
+
+            <p>
+                Select your preferred seats before completing your booking.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔒
+            </div>
+
+            <h3>
+                Secure Payment
+            </h3>
+
+            <p>
+                Your payment information is handled securely.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📱
+            </div>
+
+            <h3>
+                Digital Ticket
+            </h3>
+
+            <p>
+                Get your booking confirmation and ticket instantly.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section class="newsletter">
+
+    <div>
+
+        <span class="section-label">
+            STAY UPDATED
+        </span>
+
+        <h2>
+            Never Miss a Movie.
+        </h2>
+
+        <p>
+            Subscribe to receive movie updates and exclusive offers.
+        </p>
+
+    </div>
+
+
+    <form class="newsletter-form" id="newsletterForm">
+
+        <input
+            type="email"
+            id="emailInput"
+            placeholder="Enter your email address"
+            required
+        >
+
+        <button type="submit">
+            Subscribe
+        </button>
+
+    </form>
+
+</section>
+
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+
+        <div class="footer-brand">
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">🎬</span>
+
+                <span>
+                    Movie<span class="logo-highlight">Book</span>
+                </span>
+
+            </a>
+
+            <p>
+                Your simple and convenient movie ticket
+                booking platform.
+            </p>
+
+            <div class="social-links">
+
+                <a href="#" aria-label="Instagram">◎</a>
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="YouTube">▶</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Quick Links
+            </h4>
+
+            <a href="index.html">Home</a>
+            <a href="movies.html">Movies</a>
+            <a href="theatres.html">Theatres</a>
+            <a href="bookings.html">My Bookings</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Support
+            </h4>
+
+            <a href="#">Help Center</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Contact
+            </h4>
+
+            <p>📧 support@moviebook.com</p>
+            <p>📞 +91 98765 43210</p>
+            <p>📍 New Delhi, India</p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 MovieBook. All Rights Reserved.
+        </p>
+
+        <p>
+            Movie Ticket Booking System
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= LOCATION MODAL ================= -->
+
+<div class="modal" id="locationModal">
+
+    <div class="modal-box">
+
+        <button class="close-modal" id="closeLocation">
+            ×
+        </button>
+
+        <div class="modal-icon">
+            📍
+        </div>
+
+        <h2>
+            Select Your City
+        </h2>
+
+        <p>
+            Choose your city to find nearby theatres and movies.
+        </p>
+
+
+        <div class="city-list">
+
+            <button data-city="Delhi">
+                📍 Delhi
+            </button>
+
+            <button data-city="Noida">
+                📍 Noida
+            </button>
+
+            <button data-city="Ghaziabad">
+                📍 Ghaziabad
+            </button>
+
+            <button data-city="Lucknow">
+                📍 Lucknow
+            </button>
+
+            <button data-city="Patna">
+                📍 Patna
+            </button>
+
+            <button data-city="Mumbai">
+                📍 Mumbai
+            </button>
+
+            <button data-city="Bangalore">
+                📍 Bangalore
+            </button>
+
+            <button data-city="Hyderabad">
+                📍 Hyderabad
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= OFFER MODAL ================= -->
+
+<div class="modal" id="offerModal">
+
+    <div class="modal-box offer-modal-box">
+
+        <button class="close-modal" id="closeOffer">
+            ×
+        </button>
+
+        <div class="modal-icon">
+            🎁
+        </div>
+
+        <h2>
+            Exclusive Offers
+        </h2>
+
+        <p>
+            Use these offers while booking your movie tickets.
+        </p>
+
+
+        <div class="coupon">
+
+            <div>
+
+                <span>
+                    MOVIE50
+                </span>
+
+                <strong>
+                    ₹50 OFF
+                </strong>
+
+            </div>
+
+            <button onclick="copyCoupon('MOVIE50')">
+                Copy
+            </button>
+
+        </div>
+
+
+        <div class="coupon">
+
+            <div>
+
+                <span>
+                    FIRSTBOOK
+                </span>
+
+                <strong>
+                    20% OFF
+                </strong>
+
+            </div>
+
+            <button onclick="copyCoupon('FIRSTBOOK')">
+                Copy
+            </button>
+
+        </div>
+
+
+        <div class="coupon">
+
+            <div>
+
+                <span>
+                    WEEKEND
+                </span>
+
+                <strong>
+                    ₹100 OFF
+                </strong>
+
+            </div>
+
+            <button onclick="copyCoupon('WEEKEND')">
+                Copy
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div class="toast" id="toast">
+    <span id="toastMessage">
+        Success!
+    </span>
+</div>
+
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

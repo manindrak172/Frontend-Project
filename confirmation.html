@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Booking Confirmed | CineBook</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #0b0b0f;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 70px;
+            background: #111116;
+            border-bottom: 1px solid #29292f;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #e50914;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e50914;
+        }
+
+        .nav-btn {
+            background: #e50914;
+            color: white !important;
+            padding: 9px 18px;
+            border-radius: 6px;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .confirmation-wrapper {
+            padding: 55px 0 70px;
+        }
+
+        /* ================= SUCCESS ================= */
+
+        .success-box {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .success-icon {
+            width: 85px;
+            height: 85px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background: rgba(34, 197, 94, 0.12);
+            border: 2px solid #22c55e;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 40px;
+            color: #22c55e;
+
+            animation: pop 0.5s ease;
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-box h1 {
+            margin-top: 22px;
+            font-size: 32px;
+        }
+
+        .success-box p {
+            color: #999;
+            margin-top: 8px;
+        }
+
+        /* ================= TICKET ================= */
+
+        .ticket {
+            background: #15151b;
+            border: 1px solid #2b2b32;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .ticket-header {
+            padding: 25px 30px;
+
+            background: linear-gradient(
+                135deg,
+                #1c1c24,
+                #141419
+            );
+
+            border-bottom: 1px dashed #444;
+        }
+
+        .ticket-header h2 {
+            font-size: 22px;
+        }
+
+        .booking-id {
+            margin-top: 6px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .booking-id span {
+            color: #e50914;
+            font-weight: 600;
+        }
+
+        /* ================= TICKET CONTENT ================= */
+
+        .ticket-content {
+            display: grid;
+            grid-template-columns: 1fr 250px;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .movie-info {
+            display: flex;
+            gap: 20px;
+        }
+
+        .poster {
+            width: 145px;
+            height: 205px;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #3b0a0a,
+                    #e50914,
+                    #160000
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 15px;
+
+            flex-shrink: 0;
+        }
+
+        .poster span {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .movie-details h3 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .movie-details p {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .movie-details i {
+            width: 20px;
+            color: #e50914;
+        }
+
+        /* ================= INFO GRID ================= */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .info-box {
+            background: #101014;
+            border: 1px solid #29292f;
+            padding: 15px;
+            border-radius: 9px;
+        }
+
+        .info-box small {
+            display: block;
+            color: #777;
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+        .info-box strong {
+            font-size: 14px;
+        }
+
+        /* ================= QR ================= */
+
+        .qr-section {
+            border-left: 1px solid #2c2c32;
+
+            padding-left: 30px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-code {
+            width: 170px;
+            height: 170px;
+
+            background: white;
+
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #111;
+
+            font-size: 65px;
+        }
+
+        .qr-section p {
+            color: #888;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        /* ================= PAYMENT ================= */
+
+        .payment-section {
+            padding: 25px 30px;
+
+            border-top: 1px dashed #444;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .payment-info p {
+            color: #999;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .payment-status {
+            color: #22c55e !important;
+            font-weight: 600;
+        }
+
+        .amount {
+            text-align: right;
+        }
+
+        .amount small {
+            color: #888;
+            display: block;
+            font-size: 12px;
+        }
+
+        .amount h2 {
+            color: #e50914;
+            font-size: 27px;
+        }
+
+        /* ================= ACTION BUTTONS ================= */
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 23px;
+            border-radius: 7px;
+
+            font-family: inherit;
+            font-size: 14px;
+
+            cursor: pointer;
+            text-decoration: none;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #e50914;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff1c27;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #202027;
+            border: 1px solid #333;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #2b2b34;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            border-top: 1px solid #222;
+            text-align: center;
+            padding: 25px;
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .ticket-content {
+                grid-template-columns: 1fr;
+            }
+
+            .qr-section {
+                border-left: none;
+                border-top: 1px solid #2c2c32;
+                padding-left: 0;
+                padding-top: 25px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .confirmation-wrapper {
+                padding-top: 35px;
+            }
+
+            .success-box h1 {
+                font-size: 26px;
+            }
+
+            .ticket-header,
+            .ticket-content,
+            .payment-section {
+                padding: 20px;
+            }
+
+            .movie-info {
+                flex-direction: column;
+            }
+
+            .poster {
+                width: 130px;
+                height: 180px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .amount {
+                text-align: left;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+        Cine<span>Book</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="bookings.html">My Bookings</a>
+        <a href="login.html" class="nav-btn">Login</a>
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="confirmation-wrapper">
+
+    <div class="container">
+
+        <!-- SUCCESS -->
+
+        <div class="success-box">
+
+            <div class="success-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <h1>Booking Confirmed!</h1>
+
+            <p>
+                Your movie tickets have been booked successfully.
+            </p>
+
+        </div>
+
+
+        <!-- ================= TICKET ================= -->
+
+        <div class="ticket">
+
+            <!-- HEADER -->
+
+            <div class="ticket-header">
+
+                <h2>
+                    <i class="fa-solid fa-ticket"></i>
+                    E-Ticket
+                </h2>
+
+                <div class="booking-id">
+                    Booking ID:
+                    <span id="bookingId">CB000000</span>
+                </div>
+
+            </div>
+
+
+            <!-- CONTENT -->
+
+            <div class="ticket-content">
+
+                <!-- MOVIE -->
+
+                <div>
+
+                    <div class="movie-info">
+
+                        <div class="poster">
+                            <span id="posterMovie">
+                                WAR 2
+                            </span>
+                        </div>
+
+                        <div class="movie-details">
+
+                            <h3 id="movieName">
+                                WAR 2
+                            </h3>
+
+                            <p>
+                                <i class="fa-solid fa-calendar"></i>
+                                <span id="movieDate">
+                                    16 September 2026
+                                </span>
+                            </p>
+
+                            <p>
+                                <i class="fa-solid fa-clock"></i>
+                                <span id="movieTime">
+                                    07:30 PM
+                                </span>
+                            </p>
+
+                            <p>
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span id="theatreName">
+                                    PVR Cinemas
+                                </span>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- INFO -->
+
+                    <div class="info-grid">
+
+                        <div class="info-box">
+
+                            <small>SEATS</small>
+
+                            <strong id="seatNumbers">
+                                A1, A2
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <small>TOTAL TICKETS</small>
+
+                            <strong id="ticketCount">
+                                2 Tickets
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <small>PAYMENT METHOD</small>
+
+                            <strong id="paymentMethod">
+                                UPI
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <small>BOOKING DATE</small>
+
+                            <strong id="bookingDate">
+                                16 September 2026
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QR -->
+
+                <div class="qr-section">
+
+                    <div class="qr-code">
+
+                        <i class="fa-solid fa-qrcode"></i>
+
+                    </div>
+
+                    <p>
+                        Scan this QR code<br>
+                        at the cinema entrance
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAYMENT -->
+
+            <div class="payment-section">
+
+                <div class="payment-info">
+
+                    <strong>
+                        Payment Status
+                    </strong>
+
+                    <p class="payment-status">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span id="paymentStatus">
+                            Payment Successful
+                        </span>
+                    </p>
+
+                </div>
+
+
+                <div class="amount">
+
+                    <small>
+                        Amount Paid
+                    </small>
+
+                    <h2>
+                        ₹<span id="amountPaid">0</span>
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="actions">
+
+            <button class="btn btn-secondary" onclick="window.print()">
+
+                <i class="fa-solid fa-print"></i>
+
+                Print Ticket
+
+            </button>
+
+
+            <button class="btn btn-secondary" onclick="downloadTicket()">
+
+                <i class="fa-solid fa-download"></i>
+
+                Download Ticket
+
+            </button>
+
+
+            <a href="bookings.html" class="btn btn-secondary">
+
+                <i class="fa-solid fa-ticket"></i>
+
+                My Bookings
+
+            </a>
+
+
+            <a href="index.html" class="btn btn-primary">
+
+                <i class="fa-solid fa-house"></i>
+
+                Go Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 CineBook. All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+    /* =========================================
+       GET BOOKING DATA FROM LOCAL STORAGE
+    ========================================= */
+
+    const movie =
+        localStorage.getItem("selectedMovie") || "WAR 2";
+
+    const date =
+        localStorage.getItem("selectedDate") ||
+        "16 September 2026";
+
+    const theatre =
+        localStorage.getItem("selectedTheatre") ||
+        "PVR Cinemas";
+
+    const time =
+        localStorage.getItem("selectedTime") ||
+        "07:30 PM";
+
+    const seatsString =
+        localStorage.getItem("selectedSeats") ||
+        "A1, A2";
+
+    const ticketPrice =
+        Number(localStorage.getItem("ticketPrice")) || 250;
+
+    const totalAmount =
+        Number(localStorage.getItem("totalAmount")) || 500;
+
+    const finalAmount =
+        Number(localStorage.getItem("finalAmount")) ||
+        totalAmount + 30;
+
+    const paymentMethod =
+        localStorage.getItem("paymentMethod") || "UPI";
+
+    const paymentStatus =
+        localStorage.getItem("paymentStatus") ||
+        "success";
+
+    const bookingDate =
+        localStorage.getItem("bookingDate") ||
+        new Date().toLocaleDateString(
+            "en-IN",
+            {
+                day: "2-digit",
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+    let bookingId =
+        localStorage.getItem("bookingId");
+
+
+    /* =========================================
+       GENERATE BOOKING ID IF NOT AVAILABLE
+    ========================================= */
+
+    if (!bookingId) {
+
+        bookingId =
+            "CB" +
+            Date.now()
+                .toString()
+                .slice(-8);
+
+        localStorage.setItem(
+            "bookingId",
+            bookingId
+        );
+    }
+
+
+    /* =========================================
+       DISPLAY DATA
+    ========================================= */
+
+    document.getElementById("bookingId")
+        .textContent = bookingId;
+
+
+    document.getElementById("movieName")
+        .textContent = movie;
+
+
+    document.getElementById("posterMovie")
+        .textContent = movie;
+
+
+    document.getElementById("movieDate")
+        .textContent = date;
+
+
+    document.getElementById("movieTime")
+        .textContent = time;
+
+
+    document.getElementById("theatreName")
+        .textContent = theatre;
+
+
+    document.getElementById("seatNumbers")
+        .textContent = seatsString;
+
+
+    /* =========================================
+       TICKET COUNT
+    ========================================= */
+
+    let seatArray = [];
+
+    if (seatsString.includes(",")) {
+
+        seatArray = seatsString
+            .split(",")
+            .map(seat => seat.trim());
+
+    } else {
+
+        seatArray = [seatsString];
+
+    }
+
+
+    const ticketCount =
+        seatArray.length;
+
+
+    document.getElementById("ticketCount")
+        .textContent =
+        ticketCount +
+        (ticketCount === 1
+            ? " Ticket"
+            : " Tickets");
+
+
+    /* =========================================
+       PAYMENT
+    ========================================= */
+
+    document.getElementById("paymentMethod")
+        .textContent =
+        paymentMethod;
+
+
+    document.getElementById("bookingDate")
+        .textContent =
+        bookingDate;
+
+
+    document.getElementById("amountPaid")
+        .textContent =
+        finalAmount;
+
+
+    /* =========================================
+       PAYMENT STATUS
+    ========================================= */
+
+    if (
+        paymentStatus === "success" ||
+        paymentStatus === "successful"
+    ) {
+
+        document.getElementById("paymentStatus")
+            .textContent =
+            "Payment Successful";
+
+    } else {
+
+        document.getElementById("paymentStatus")
+            .textContent =
+            "Payment Pending";
+
+    }
+
+
+    /* =========================================
+       DOWNLOAD TICKET
+    ========================================= */
+
+    function downloadTicket() {
+
+        const ticketText = `
+
+CINEBOOK - MOVIE TICKET
+==============================
+
+Booking ID: ${bookingId}
+
+Movie: ${movie}
+
+Date: ${date}
+
+Time: ${time}
+
+Theatre: ${theatre}
+
+Seats: ${seatsString}
+
+Tickets: ${ticketCount}
+
+Payment Method: ${paymentMethod}
+
+Payment Status: Payment Successful
+
+Amount Paid: ₹${finalAmount}
+
+==============================
+
+Thank you for booking with CineBook!
+
+        `;
+
+
+        const blob =
+            new Blob(
+                [ticketText],
+                {
+                    type: "text/plain"
+                }
+            );
+
+
+        const url =
+            URL.createObjectURL(blob);
+
+
+        const link =
+            document.createElement("a");
+
+
+        link.href = url;
+
+        link.download =
+            "CineBook-Ticket-" +
+            bookingId +
+            ".txt";
+
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        document.body.removeChild(link);
+
+        URL.revokeObjectURL(url);
+
+    }
+
+</script>
+
+</body>
+</html>

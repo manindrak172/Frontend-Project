@@ -1,0 +1,166 @@
+/* ================= NAVBAR ================= */
+
+.navbar {
+    width: 100%;
+    min-height: 70px;
+    padding: 0 6%;
+    background: #111116;
+    border-bottom: 1px solid #292933;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+/* ================= LOGO ================= */
+
+.logo {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: #e50914;
+}
+
+
+/* ================= NAVIGATION ================= */
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar nav a {
+    position: relative;
+
+    color: #b8b8c2;
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    padding: 25px 0;
+
+    transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+    color: #ffffff;
+}
+
+
+/* ================= ACTIVE LINK ================= */
+
+.navbar nav a.active {
+    color: #ffffff;
+}
+
+.navbar nav a.active::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 17px;
+
+    height: 2px;
+
+    background: #e50914;
+    border-radius: 5px;
+}
+
+
+/* ================= MENU BUTTON ================= */
+
+.menu-btn {
+    display: none;
+
+    background: transparent;
+    border: none;
+
+    color: #ffffff;
+    font-size: 26px;
+
+    cursor: pointer;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .navbar nav {
+        display: none;
+
+        position: absolute;
+
+        top: 70px;
+        left: 0;
+        width: 100%;
+
+        background: #111116;
+
+        border-bottom: 1px solid #292933;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 10px 5%;
+    }
+
+    .navbar nav.show {
+        display: flex;
+    }
+
+    .navbar nav a {
+        padding: 15px 0;
+
+        border-bottom: 1px solid #25252e;
+    }
+
+    .navbar nav a:last-child {
+        border-bottom: none;
+    }
+
+    .navbar nav a.active::after {
+        display: none;
+    }
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 450px) {
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .navbar {
+        min-height: 65px;
+    }
+
+    .navbar nav {
+        top: 65px;
+    }
+}

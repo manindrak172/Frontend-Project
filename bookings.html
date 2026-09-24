@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Bookings | CineBook</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #0b0b0f;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 70px;
+            background: #111116;
+            border-bottom: 1px solid #29292f;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            color: #fff;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #e50914;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e50914;
+        }
+
+        .nav-btn {
+            background: #e50914;
+            color: white !important;
+            padding: 9px 18px;
+            border-radius: 6px;
+        }
+
+        /* ================= PAGE ================= */
+
+        .page {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 50px 0 70px;
+        }
+
+        .page-header {
+            margin-bottom: 35px;
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* ================= BOOKING CARD ================= */
+
+        .booking-card {
+            background: #15151b;
+            border: 1px solid #29292f;
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+
+        .booking-card:hover {
+            border-color: #444;
+            transform: translateY(-2px);
+        }
+
+        .booking-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 25px;
+
+            border-bottom: 1px solid #29292f;
+            background: #121217;
+        }
+
+        .booking-id {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .booking-id strong {
+            color: #fff;
+        }
+
+        .status {
+            padding: 6px 12px;
+            border-radius: 20px;
+
+            background: rgba(34, 197, 94, 0.12);
+            color: #22c55e;
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* ================= BOOKING BODY ================= */
+
+        .booking-body {
+            display: grid;
+            grid-template-columns: 130px 1fr auto;
+            gap: 25px;
+
+            padding: 25px;
+            align-items: center;
+        }
+
+        .poster {
+            width: 130px;
+            height: 175px;
+
+            border-radius: 9px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #3b0a0a,
+                    #e50914,
+                    #160000
+                );
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            padding: 12px;
+
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .movie-info h2 {
+            font-size: 23px;
+            margin-bottom: 15px;
+        }
+
+        .detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #aaa;
+
+            font-size: 13px;
+            margin-bottom: 9px;
+        }
+
+        .detail i {
+            width: 18px;
+            color: #e50914;
+        }
+
+        .booking-info {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(130px, 1fr));
+            gap: 12px;
+
+            margin-top: 18px;
+        }
+
+        .info-box {
+            background: #101014;
+            border: 1px solid #29292f;
+            border-radius: 7px;
+            padding: 10px 12px;
+        }
+
+        .info-box small {
+            display: block;
+            color: #777;
+            font-size: 10px;
+            margin-bottom: 3px;
+        }
+
+        .info-box strong {
+            font-size: 12px;
+        }
+
+        /* ================= PRICE ================= */
+
+        .booking-price {
+            text-align: right;
+            min-width: 130px;
+        }
+
+        .booking-price small {
+            color: #777;
+            font-size: 11px;
+        }
+
+        .booking-price h2 {
+            color: #e50914;
+            font-size: 25px;
+            margin: 4px 0 15px;
+        }
+
+        .view-btn {
+            border: 1px solid #444;
+            background: transparent;
+            color: white;
+
+            padding: 9px 16px;
+            border-radius: 6px;
+
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+
+            transition: 0.3s;
+        }
+
+        .view-btn:hover {
+            background: #e50914;
+            border-color: #e50914;
+        }
+
+        /* ================= EMPTY STATE ================= */
+
+        .empty {
+            display: none;
+            text-align: center;
+
+            background: #15151b;
+            border: 1px solid #29292f;
+
+            border-radius: 14px;
+
+            padding: 70px 20px;
+        }
+
+        .empty-icon {
+            width: 75px;
+            height: 75px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background: #1e1e25;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #777;
+            font-size: 30px;
+        }
+
+        .empty h2 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .empty p {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .browse-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            background: #e50914;
+            color: white;
+
+            text-decoration: none;
+
+            padding: 11px 20px;
+            border-radius: 7px;
+
+            font-size: 13px;
+        }
+
+        /* ================= MODAL ================= */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.8);
+
+            z-index: 1000;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 550px;
+
+            background: #15151b;
+            border: 1px solid #333;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+        }
+
+        .modal-header {
+            padding: 20px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-bottom: 1px solid #29292f;
+        }
+
+        .modal-header h2 {
+            font-size: 20px;
+        }
+
+        .close {
+            background: none;
+            border: none;
+
+            color: #aaa;
+            font-size: 20px;
+
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #fff;
+        }
+
+        .modal-content {
+            padding: 25px;
+        }
+
+        .modal-row {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid #24242a;
+
+            font-size: 13px;
+        }
+
+        .modal-row span:first-child {
+            color: #777;
+        }
+
+        .modal-row span:last-child {
+            color: #fff;
+            text-align: right;
+        }
+
+        .modal-total {
+            display: flex;
+            justify-content: space-between;
+
+            padding-top: 20px;
+
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .modal-total span:last-child {
+            color: #e50914;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            border-top: 1px solid #222;
+            text-align: center;
+
+            padding: 25px;
+
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .booking-body {
+                grid-template-columns: 100px 1fr;
+            }
+
+            .poster {
+                width: 100px;
+                height: 145px;
+                font-size: 16px;
+            }
+
+            .booking-price {
+                grid-column: 2;
+                text-align: left;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding-top: 35px;
+            }
+
+            .page-header h1 {
+                font-size: 27px;
+            }
+
+            .booking-top {
+                padding: 15px;
+            }
+
+            .booking-body {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .poster {
+                width: 120px;
+                height: 160px;
+            }
+
+            .booking-info {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .booking-price {
+                grid-column: auto;
+                text-align: left;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+        Cine<span>Book</span>
+    </a>
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="movies.html">
+            Movies
+        </a>
+
+        <a href="bookings.html">
+            My Bookings
+        </a>
+
+        <a href="login.html" class="nav-btn">
+            Login
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="page">
+
+    <div class="page-header">
+
+        <h1>My Bookings</h1>
+
+        <p>
+            View and manage your movie ticket bookings.
+        </p>
+
+    </div>
+
+
+    <!-- ================= BOOKING LIST ================= -->
+
+    <div id="bookingList">
+
+        <!-- Booking will be generated by JavaScript -->
+
+    </div>
+
+
+    <!-- ================= EMPTY STATE ================= -->
+
+    <div class="empty" id="emptyState">
+
+        <div class="empty-icon">
+
+            <i class="fa-solid fa-ticket"></i>
+
+        </div>
+
+        <h2>No Bookings Yet</h2>
+
+        <p>
+            You haven't booked any movie tickets yet.
+        </p>
+
+        <a href="movies.html" class="browse-btn">
+
+            <i class="fa-solid fa-film"></i>
+
+            Browse Movies
+
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- ================= BOOKING MODAL ================= -->
+
+<div class="modal" id="bookingModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>Booking Details</h2>
+
+            <button class="close" onclick="closeModal()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="modal-content">
+
+            <div class="modal-row">
+
+                <span>Booking ID</span>
+
+                <span id="modalBookingId">-</span>
+
+            </div>
+
+
+            <div class="modal-row">
+
+                <span>Movie</span>
+
+                <span id="modalMovie">-</span>
+
+            </div>
+
+
+            <div class="modal-row">
+
+                <span>Date</span>
+
+                <span id="modalDate">-</span>
+
+            </div>
+
+
+            <div class="modal-row">
+
+                <span>Time</span>
+
+                <span id="modalTime">-</span>
+
+            </div>
+
+
+            <div class="modal-row">
+
+                <span>Theatre</span>
+
+                <span id="modalTheatre">-</span>
+
+            </div>
+
+
+            <div class="modal-row">
+
+                <span>Seats</span>
+
+                <span id="modalSeats">-</span>
+
+            </div>
+
+
+            <div class="modal-row">
+
+                <span>Payment</span>
+
+                <span id="modalPayment">-</span>
+
+            </div>
+
+
+            <div class="modal-total">
+
+                <span>Total Paid</span>
+
+                <span>
+                    ₹<span id="modalAmount">0</span>
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 CineBook. All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+    /* =========================================
+       GET BOOKING DATA
+    ========================================= */
+
+    const bookingId =
+        localStorage.getItem("bookingId");
+
+    const movie =
+        localStorage.getItem("selectedMovie");
+
+    const date =
+        localStorage.getItem("selectedDate");
+
+    const theatre =
+        localStorage.getItem("selectedTheatre");
+
+    const time =
+        localStorage.getItem("selectedTime");
+
+    const seats =
+        localStorage.getItem("selectedSeats");
+
+    const paymentMethod =
+        localStorage.getItem("paymentMethod");
+
+    const paymentStatus =
+        localStorage.getItem("paymentStatus");
+
+    const finalAmount =
+        Number(localStorage.getItem("finalAmount")) || 0;
+
+
+    /* =========================================
+       CHECK BOOKING
+    ========================================= */
+
+    const bookingList =
+        document.getElementById("bookingList");
+
+    const emptyState =
+        document.getElementById("emptyState");
+
+
+    if (
+        bookingId &&
+        movie &&
+        date &&
+        theatre &&
+        time &&
+        seats
+    ) {
+
+        createBooking();
+
+    } else {
+
+        emptyState.style.display = "block";
+
+    }
+
+
+    /* =========================================
+       CREATE BOOKING CARD
+    ========================================= */
+
+    function createBooking() {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "booking-card";
+
+
+        card.innerHTML = `
+
+            <div class="booking-top">
+
+                <div class="booking-id">
+
+                    Booking ID:
+                    <strong>${bookingId}</strong>
+
+                </div>
+
+                <div class="status">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Confirmed
+
+                </div>
+
+            </div>
+
+
+            <div class="booking-body">
+
+                <div class="poster">
+
+                    ${movie}
+
+                </div>
+
+
+                <div class="movie-info">
+
+                    <h2>
+                        ${movie}
+                    </h2>
+
+
+                    <div class="detail">
+
+                        <i class="fa-solid fa-calendar"></i>
+
+                        <span>
+                            ${date}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                        <span>
+                            ${time}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <span>
+                            ${theatre}
+                        </span>
+
+                    </div>
+
+
+                    <div class="booking-info">
+
+                        <div class="info-box">
+
+                            <small>SEATS</small>
+
+                            <strong>
+                                ${seats}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <small>PAYMENT</small>
+
+                            <strong>
+                                ${paymentMethod || "UPI"}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="booking-price">
+
+                    <small>
+                        Amount Paid
+                    </small>
+
+                    <h2>
+                        ₹${finalAmount}
+                    </h2>
+
+                    <button
+                        class="view-btn"
+                        onclick="openBooking()">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                        View Details
+
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+
+        bookingList.appendChild(card);
+
+    }
+
+
+    /* =========================================
+       OPEN BOOKING MODAL
+    ========================================= */
+
+    function openBooking() {
+
+        document.getElementById("modalBookingId")
+            .textContent =
+            bookingId || "-";
+
+
+        document.getElementById("modalMovie")
+            .textContent =
+            movie || "-";
+
+
+        document.getElementById("modalDate")
+            .textContent =
+            date || "-";
+
+
+        document.getElementById("modalTime")
+            .textContent =
+            time || "-";
+
+
+        document.getElementById("modalTheatre")
+            .textContent =
+            theatre || "-";
+
+
+        document.getElementById("modalSeats")
+            .textContent =
+            seats || "-";
+
+
+        document.getElementById("modalPayment")
+            .textContent =
+            paymentMethod || "UPI";
+
+
+        document.getElementById("modalAmount")
+            .textContent =
+            finalAmount;
+
+
+        document.getElementById("bookingModal")
+            .classList.add("active");
+
+    }
+
+
+    /* =========================================
+       CLOSE MODAL
+    ========================================= */
+
+    function closeModal() {
+
+        document.getElementById("bookingModal")
+            .classList.remove("active");
+
+    }
+
+
+    /* =========================================
+       CLOSE WHEN CLICKING OUTSIDE
+    ========================================= */
+
+    document.getElementById("bookingModal")
+        .addEventListener("click", function(event) {
+
+            if (event.target === this) {
+
+                closeModal();
+
+            }
+
+        });
+
+
+</script>
+
+</body>
+</html>

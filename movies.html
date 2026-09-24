@@ -1,0 +1,1298 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Movies | CineBook</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #0b0b0f;
+            color: #fff;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 70px;
+            background: #111116;
+            border-bottom: 1px solid #29292f;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #e50914;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #e50914;
+        }
+
+        .nav-btn {
+            background: #e50914;
+            color: white !important;
+            padding: 9px 18px;
+            border-radius: 6px;
+        }
+
+        /* ================= PAGE ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .page-header {
+            padding: 55px 0 30px;
+        }
+
+        .page-header h1 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .search-wrapper {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            left: 17px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+
+        #searchInput {
+            width: 100%;
+            height: 50px;
+
+            background: #15151b;
+            border: 1px solid #29292f;
+
+            border-radius: 8px;
+
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+
+            padding: 0 18px 0 45px;
+
+            outline: none;
+        }
+
+        #searchInput:focus {
+            border-color: #e50914;
+        }
+
+        /* ================= FILTER ================= */
+
+        .filters {
+            display: flex;
+            gap: 10px;
+
+            overflow-x: auto;
+
+            padding-bottom: 10px;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            flex-shrink: 0;
+
+            padding: 9px 18px;
+
+            border-radius: 20px;
+
+            border: 1px solid #333;
+            background: #15151b;
+
+            color: #aaa;
+
+            font-family: inherit;
+            font-size: 12px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #e50914;
+            border-color: #e50914;
+            color: white;
+        }
+
+        /* ================= MOVIE GRID ================= */
+
+        .movie-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 25px;
+
+            padding-bottom: 70px;
+        }
+
+        /* ================= MOVIE CARD ================= */
+
+        .movie-card {
+            background: #15151b;
+
+            border: 1px solid #29292f;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            transition: 0.3s;
+
+            position: relative;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-6px);
+            border-color: #444;
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ================= POSTER ================= */
+
+        .poster {
+            height: 310px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 20px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .poster h2 {
+            font-size: 27px;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .poster small {
+            display: block;
+            margin-top: 10px;
+            opacity: 0.8;
+            font-size: 11px;
+        }
+
+        .poster-1 {
+            background:
+                linear-gradient(
+                    145deg,
+                    #3a0606,
+                    #e50914,
+                    #170000
+                );
+        }
+
+        .poster-2 {
+            background:
+                linear-gradient(
+                    145deg,
+                    #3b2500,
+                    #a85c00,
+                    #160d00
+                );
+        }
+
+        .poster-3 {
+            background:
+                linear-gradient(
+                    145deg,
+                    #092d26,
+                    #087f68,
+                    #021714
+                );
+        }
+
+        .poster-4 {
+            background:
+                linear-gradient(
+                    145deg,
+                    #30104d,
+                    #8e2de2,
+                    #160020
+                );
+        }
+
+        .poster-5 {
+            background:
+                linear-gradient(
+                    145deg,
+                    #101b3b,
+                    #2145a0,
+                    #050914
+                );
+        }
+
+        .poster-6 {
+            background:
+                linear-gradient(
+                    145deg,
+                    #423500,
+                    #b8860b,
+                    #171100
+                );
+        }
+
+        .poster-7 {
+            background:
+                linear-gradient(
+                    145deg,
+                    #09213a,
+                    #1477b8,
+                    #04111d
+                );
+        }
+
+        .poster-8 {
+            background:
+                linear-gradient(
+                    145deg,
+                    #46151c,
+                    #d94f4f,
+                    #190609
+                );
+        }
+
+        /* ================= RATING ================= */
+
+        .rating {
+            position: absolute;
+
+            top: 12px;
+            right: 12px;
+
+            background: rgba(0, 0, 0, 0.75);
+
+            padding: 5px 8px;
+
+            border-radius: 5px;
+
+            font-size: 11px;
+        }
+
+        .rating i {
+            color: #ffc107;
+        }
+
+        /* ================= MOVIE INFO ================= */
+
+        .movie-info {
+            padding: 18px;
+        }
+
+        .movie-info h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .movie-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+
+            color: #888;
+            font-size: 11px;
+
+            margin-bottom: 15px;
+        }
+
+        .movie-meta span {
+            background: #202027;
+            padding: 4px 7px;
+            border-radius: 4px;
+        }
+
+        .movie-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .details-btn,
+        .book-btn {
+            flex: 1;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            padding: 9px 5px;
+
+            border-radius: 6px;
+
+            font-size: 11px;
+
+            transition: 0.3s;
+        }
+
+        .details-btn {
+            background: #202027;
+            color: white;
+            border: 1px solid #333;
+        }
+
+        .details-btn:hover {
+            background: #2c2c35;
+        }
+
+        .book-btn {
+            background: #e50914;
+            color: white;
+        }
+
+        .book-btn:hover {
+            background: #ff1b25;
+        }
+
+        /* ================= NO RESULTS ================= */
+
+        .no-results {
+            display: none;
+
+            text-align: center;
+
+            padding: 70px 20px;
+
+            color: #777;
+
+            grid-column: 1 / -1;
+        }
+
+        .no-results i {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .no-results h2 {
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            border-top: 1px solid #222;
+
+            text-align: center;
+
+            padding: 25px;
+
+            color: #777;
+
+            font-size: 13px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .movie-grid {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+        @media (max-width: 750px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .movie-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            .container {
+                width: 92%;
+            }
+
+            .page-header {
+                padding-top: 35px;
+            }
+
+            .page-header h1 {
+                font-size: 27px;
+            }
+
+            .movie-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .poster {
+                height: 360px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+        Cine<span>Book</span>
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="movies.html" class="active">
+            Movies
+        </a>
+
+        <a href="bookings.html">
+            My Bookings
+        </a>
+
+        <a href="login.html" class="nav-btn">
+            Login
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="container">
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-header">
+
+        <h1>Movies</h1>
+
+        <p>
+            Explore the latest movies and book your tickets.
+        </p>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-wrapper">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for movies..."
+        >
+
+    </div>
+
+
+    <!-- FILTERS -->
+
+    <div class="filters">
+
+        <button
+            class="filter-btn active"
+            data-category="all">
+            All
+        </button>
+
+        <button
+            class="filter-btn"
+            data-category="action">
+            Action
+        </button>
+
+        <button
+            class="filter-btn"
+            data-category="comedy">
+            Comedy
+        </button>
+
+        <button
+            class="filter-btn"
+            data-category="drama">
+            Drama
+        </button>
+
+        <button
+            class="filter-btn"
+            data-category="thriller">
+            Thriller
+        </button>
+
+        <button
+            class="filter-btn"
+            data-category="hindi">
+            Hindi
+        </button>
+
+    </div>
+
+
+    <!-- MOVIES -->
+
+    <section class="movie-grid" id="movieGrid">
+
+
+        <!-- ================= WAR 2 ================= -->
+
+        <div
+            class="movie-card"
+            data-title="war 2"
+            data-category="action hindi">
+
+            <div class="poster poster-1">
+
+                <div>
+
+                    <h2>WAR<br>2</h2>
+
+                    <small>
+                        ACTION • THRILLER
+                    </small>
+
+                </div>
+
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    4.5
+                </div>
+
+            </div>
+
+
+            <div class="movie-info">
+
+                <h3>War 2</h3>
+
+                <div class="movie-meta">
+
+                    <span>Action</span>
+                    <span>Thriller</span>
+                    <span>Hindi</span>
+
+                </div>
+
+
+                <div class="movie-actions">
+
+                    <a
+                        href="movie-details.html"
+                        class="details-btn">
+                        Details
+                    </a>
+
+                    <a
+                        href="theatres.html"
+                        class="book-btn"
+                        onclick="selectMovie('War 2')">
+                        Book
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= COOLIE ================= -->
+
+        <div
+            class="movie-card"
+            data-title="coolie"
+            data-category="action hindi">
+
+            <div class="poster poster-2">
+
+                <div>
+
+                    <h2>COOLIE</h2>
+
+                    <small>
+                        ACTION • DRAMA
+                    </small>
+
+                </div>
+
+                <div class="rating">
+
+                    <i class="fa-solid fa-star"></i>
+                    4.2
+
+                </div>
+
+            </div>
+
+
+            <div class="movie-info">
+
+                <h3>Coolie</h3>
+
+                <div class="movie-meta">
+
+                    <span>Action</span>
+                    <span>Drama</span>
+                    <span>Hindi</span>
+
+                </div>
+
+
+                <div class="movie-actions">
+
+                    <a
+                        href="movie-details.html"
+                        class="details-btn">
+                        Details
+                    </a>
+
+                    <a
+                        href="theatres.html"
+                        class="book-btn"
+                        onclick="selectMovie('Coolie')">
+                        Book
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= KANTARA ================= -->
+
+        <div
+            class="movie-card"
+            data-title="kantara"
+            data-category="drama thriller">
+
+            <div class="poster poster-3">
+
+                <div>
+
+                    <h2>KANTARA</h2>
+
+                    <small>
+                        DRAMA • THRILLER
+                    </small>
+
+                </div>
+
+                <div class="rating">
+
+                    <i class="fa-solid fa-star"></i>
+                    4.6
+
+                </div>
+
+            </div>
+
+
+            <div class="movie-info">
+
+                <h3>Kantara</h3>
+
+                <div class="movie-meta">
+
+                    <span>Drama</span>
+                    <span>Thriller</span>
+
+                </div>
+
+
+                <div class="movie-actions">
+
+                    <a
+                        href="movie-details.html"
+                        class="details-btn">
+                        Details
+                    </a>
+
+                    <a
+                        href="theatres.html"
+                        class="book-btn"
+                        onclick="selectMovie('Kantara')">
+                        Book
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= HOUSEFULL ================= -->
+
+        <div
+            class="movie-card"
+            data-title="housefull 5"
+            data-category="comedy hindi">
+
+            <div class="poster poster-4">
+
+                <div>
+
+                    <h2>HOUSEFULL<br>5</h2>
+
+                    <small>
+                        COMEDY
+                    </small>
+
+                </div>
+
+                <div class="rating">
+
+                    <i class="fa-solid fa-star"></i>
+                    4.0
+
+                </div>
+
+            </div>
+
+
+            <div class="movie-info">
+
+                <h3>Housefull 5</h3>
+
+                <div class="movie-meta">
+
+                    <span>Comedy</span>
+                    <span>Hindi</span>
+
+                </div>
+
+
+                <div class="movie-actions">
+
+                    <a
+                        href="movie-details.html"
+                        class="details-btn">
+                        Details
+                    </a>
+
+                    <a
+                        href="theatres.html"
+                        class="book-btn"
+                        onclick="selectMovie('Housefull 5')">
+                        Book
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= AVENGERS ================= -->
+
+        <div
+            class="movie-card"
+            data-title="avengers secret wars"
+            data-category="action">
+
+            <div class="poster poster-5">
+
+                <div>
+
+                    <h2>AVENGERS<br>SECRET WARS</h2>
+
+                    <small>
+                        ACTION • SCI-FI
+                    </small>
+
+                </div>
+
+                <div class="rating">
+
+                    <i class="fa-solid fa-star"></i>
+                    4.7
+
+                </div>
+
+            </div>
+
+
+            <div class="movie-info">
+
+                <h3>Avengers: Secret Wars</h3>
+
+                <div class="movie-meta">
+
+                    <span>Action</span>
+                    <span>Sci-Fi</span>
+
+                </div>
+
+
+                <div class="movie-actions">
+
+                    <a
+                        href="movie-details.html"
+                        class="details-btn">
+                        Details
+                    </a>
+
+                    <a
+                        href="theatres.html"
+                        class="book-btn"
+                        onclick="selectMovie('Avengers: Secret Wars')">
+                        Book
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= AVATAR ================= -->
+
+        <div
+            class="movie-card"
+            data-title="avatar"
+            data-category="action drama">
+
+            <div class="poster poster-6">
+
+                <div>
+
+                    <h2>AVATAR</h2>
+
+                    <small>
+                        ACTION • ADVENTURE
+                    </small>
+
+                </div>
+
+                <div class="rating">
+
+                    <i class="fa-solid fa-star"></i>
+                    4.4
+
+                </div>
+
+            </div>
+
+
+            <div class="movie-info">
+
+                <h3>Avatar</h3>
+
+                <div class="movie-meta">
+
+                    <span>Action</span>
+                    <span>Adventure</span>
+
+                </div>
+
+
+                <div class="movie-actions">
+
+                    <a
+                        href="movie-details.html"
+                        class="details-btn">
+                        Details
+                    </a>
+
+                    <a
+                        href="theatres.html"
+                        class="book-btn"
+                        onclick="selectMovie('Avatar')">
+                        Book
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= PROJECT X ================= -->
+
+        <div
+            class="movie-card"
+            data-title="project x"
+            data-category="action thriller">
+
+            <div class="poster poster-7">
+
+                <div>
+
+                    <h2>PROJECT<br>X</h2>
+
+                    <small>
+                        ACTION • THRILLER
+                    </small>
+
+                </div>
+
+                <div class="rating">
+
+                    <i class="fa-solid fa-star"></i>
+                    4.1
+
+                </div>
+
+            </div>
+
+
+            <div class="movie-info">
+
+                <h3>Project X</h3>
+
+                <div class="movie-meta">
+
+                    <span>Action</span>
+                    <span>Thriller</span>
+
+                </div>
+
+
+                <div class="movie-actions">
+
+                    <a
+                        href="movie-details.html"
+                        class="details-btn">
+                        Details
+                    </a>
+
+                    <a
+                        href="theatres.html"
+                        class="book-btn"
+                        onclick="selectMovie('Project X')">
+                        Book
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= COMEDY NIGHTS ================= -->
+
+        <div
+            class="movie-card"
+            data-title="comedy nights"
+            data-category="comedy hindi">
+
+            <div class="poster poster-8">
+
+                <div>
+
+                    <h2>COMEDY<br>NIGHTS</h2>
+
+                    <small>
+                        COMEDY
+                    </small>
+
+                </div>
+
+                <div class="rating">
+
+                    <i class="fa-solid fa-star"></i>
+                    3.9
+
+                </div>
+
+            </div>
+
+
+            <div class="movie-info">
+
+                <h3>Comedy Nights</h3>
+
+                <div class="movie-meta">
+
+                    <span>Comedy</span>
+                    <span>Hindi</span>
+
+                </div>
+
+
+                <div class="movie-actions">
+
+                    <a
+                        href="movie-details.html"
+                        class="details-btn">
+                        Details
+                    </a>
+
+                    <a
+                        href="theatres.html"
+                        class="book-btn"
+                        onclick="selectMovie('Comedy Nights')">
+                        Book
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- NO RESULTS -->
+
+        <div class="no-results" id="noResults">
+
+            <i class="fa-solid fa-film"></i>
+
+            <h2>No Movies Found</h2>
+
+            <p>
+                Try searching with another movie name.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 CineBook. All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+    /* =========================================
+       MOVIE SEARCH
+    ========================================= */
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+    const movieCards =
+        document.querySelectorAll(".movie-card");
+
+    const noResults =
+        document.getElementById("noResults");
+
+    const filterButtons =
+        document.querySelectorAll(".filter-btn");
+
+
+    let selectedCategory = "all";
+
+
+    function filterMovies() {
+
+        const searchText =
+            searchInput.value
+                .toLowerCase()
+                .trim();
+
+        let visibleMovies = 0;
+
+
+        movieCards.forEach(card => {
+
+            const title =
+                card.dataset.title
+                    .toLowerCase();
+
+            const category =
+                card.dataset.category
+                    .toLowerCase();
+
+
+            const matchesSearch =
+                title.includes(searchText);
+
+
+            const matchesCategory =
+                selectedCategory === "all" ||
+                category.includes(selectedCategory);
+
+
+            if (
+                matchesSearch &&
+                matchesCategory
+            ) {
+
+                card.style.display = "block";
+
+                visibleMovies++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        if (visibleMovies === 0) {
+
+            noResults.style.display = "block";
+
+        } else {
+
+            noResults.style.display = "none";
+
+        }
+
+    }
+
+
+    searchInput.addEventListener(
+        "input",
+        filterMovies
+    );
+
+
+    /* =========================================
+       CATEGORY FILTER
+    ========================================= */
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                filterButtons.forEach(btn => {
+
+                    btn.classList.remove("active");
+
+                });
+
+
+                this.classList.add("active");
+
+
+                selectedCategory =
+                    this.dataset.category;
+
+
+                filterMovies();
+
+            }
+        );
+
+    });
+
+
+    /* =========================================
+       SAVE SELECTED MOVIE
+    ========================================= */
+
+    function selectMovie(movieName) {
+
+        localStorage.setItem(
+            "selectedMovie",
+            movieName
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
+```
